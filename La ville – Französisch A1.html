@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La ville – Französisch A1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#EDF0F5; --surface:#FFFFFF; --ink:#14233A; --muted:#566880; --line:#D2D9E4;
+  --plaque:#12418A; --accent:#12418A; --soft:#E0E9F7; --focus:#1B6BE0;
+  --yellow:#FFCE00; --green:#0B7A4B; --green-bg:#DCF2E6; --red:#C62F27; --red-bg:#FBE2E0;
+  --head:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D1626; --surface:#16233A; --ink:#E8EEF8; --muted:#9DB0CB; --line:#2A3B58;
+    --plaque:#1B56B0; --accent:#8DB6F5; --soft:#1C2E4D; --focus:#FFCE00;
+    --green:#4FD08F; --green-bg:#123A2B; --red:#FF7B72; --red-bg:#40201F;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D1626; --surface:#16233A; --ink:#E8EEF8; --muted:#9DB0CB; --line:#2A3B58;
+  --plaque:#1B56B0; --accent:#8DB6F5; --soft:#1C2E4D; --focus:#FFCE00;
+  --green:#4FD08F; --green-bg:#123A2B; --red:#FF7B72; --red-bg:#40201F;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.5;font-size:17px}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+button{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--head);letter-spacing:.01em;margin:0}
+h2{font-size:1.9rem;font-weight:700}
+h3{font-size:1.35rem;font-weight:600}
+small,.mini{color:var(--muted)}
+.mini{font-size:.92rem;margin:.2rem 0 .8rem}
+
+/* Kopf */
+.top{padding:18px 0 10px;display:grid;gap:14px;grid-template-columns:1fr;align-items:center}
+@media(min-width:760px){.top{grid-template-columns:auto 1fr}}
+.plate{display:inline-block;background:var(--plaque);color:#fff;border-radius:10px;padding:8px 22px 10px;
+  box-shadow:inset 0 0 0 3px var(--plaque),inset 0 0 0 5px #fff}
+.plate .rue{display:block;font-size:.72rem;letter-spacing:.08em;opacity:.9}
+.plate h1{font-size:2.6rem;font-weight:700;line-height:1}
+.brand p{margin:.4rem 0 0}
+.hud{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;justify-content:flex-end}
+.lvl{display:flex;gap:10px;align-items:center;min-width:210px}
+.lvl-n{font-family:var(--head);font-weight:700;font-size:1.7rem;background:var(--yellow);color:#14233A;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;flex:none}
+.lvl b{display:block;line-height:1.2}
+.bar{height:9px;background:var(--line);border-radius:6px;overflow:hidden;margin:3px 0}
+.bar>i{display:block;height:100%;background:var(--plaque);width:0;transition:width .4s}
+.stat{display:grid;justify-items:center;line-height:1.1}
+.stat b{font-family:var(--head);font-size:1.7rem}
+.ring{position:relative;display:grid;justify-items:center}
+.ring svg{width:46px;height:46px;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:5}
+.ring .bg{stroke:var(--line)}
+.ring .fg{stroke:var(--green);stroke-dasharray:100;stroke-dashoffset:100;stroke-linecap:round;transition:stroke-dashoffset .5s}
+.ring span{position:absolute;top:12px;font-size:.72rem;font-weight:700}
+
+/* Navigation */
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:2px solid var(--line);display:flex;gap:2px;overflow-x:auto}
+.tabs button{background:none;border:0;padding:.7rem 1rem;cursor:pointer;font-weight:700;color:var(--muted);white-space:nowrap;border-radius:8px 8px 0 0}
+.tabs button.on{color:var(--ink);box-shadow:inset 0 -5px 0 var(--yellow)}
+main{padding:20px 0 90px;min-height:60vh}
+
+/* Buttons und Formulare */
+.btn{border:2px solid var(--plaque);background:var(--plaque);color:#fff;border-radius:9px;padding:.55em 1.1em;font-weight:700;cursor:pointer}
+.btn.alt{background:transparent;color:var(--accent)}
+.btn.good{background:var(--green);border-color:var(--green);color:#fff}
+.btn.bad{background:var(--red);border-color:var(--red);color:#fff}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn.good,:root:not([data-theme="light"]) .btn.bad{color:#0D1626}}
+.btn.danger{background:transparent;color:var(--red);border-color:var(--red)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.icon{border:1.5px solid var(--line);background:var(--surface);border-radius:8px;cursor:pointer;padding:.15em .5em}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:end;margin-bottom:14px}
+.toolbar label,.sel{display:grid;gap:3px;font-size:.88rem;color:var(--muted);font-weight:700}
+select,input[type=search],input[type=text]{font:inherit;color:var(--ink);background:var(--surface);border:2px solid var(--line);border-radius:8px;padding:.45em .6em;min-width:150px}
+
+/* Wortfeld */
+.hero{display:grid;justify-items:center;text-align:center;gap:10px;margin-bottom:26px}
+.sign{background:var(--plaque);color:#fff;border-radius:16px;padding:18px 54px 20px;box-shadow:inset 0 0 0 6px var(--plaque),inset 0 0 0 9px #fff;cursor:pointer;border:0}
+.sign small{color:#fff;opacity:.85;display:block;font-size:.8rem;letter-spacing:.08em}
+.sign strong{display:block;font-family:var(--head);font-size:4rem;line-height:1;font-weight:700}
+.sign em{font-style:normal;font-size:1.05rem}
+.clusters{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.cluster{background:var(--surface);border:1.5px solid var(--line);border-top:6px solid var(--plaque);border-radius:6px 6px 14px 14px;padding:14px 16px}
+.cluster h3{display:flex;gap:8px;align-items:baseline;margin-bottom:10px}
+.cluster h3 small{margin-left:auto;font-family:var(--body);font-size:.8rem}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{border:1.5px solid var(--line);background:var(--bg);border-radius:999px;padding:.3em .8em;cursor:pointer}
+.chip.open{background:var(--soft);border-color:var(--plaque)}
+.chip em{font-style:normal;font-weight:700;color:var(--accent);margin-left:.3em}
+.note{margin-top:22px;background:var(--surface);border-left:6px solid var(--yellow);border-radius:6px;padding:14px 18px}
+.note ul{margin:.4rem 0 0;padding-left:1.2rem}
+.note details{margin-top:10px}
+.note summary{cursor:pointer;font-weight:700}
+
+/* Vokabelliste */
+.vt{width:100%;border-collapse:collapse;background:var(--surface);border-radius:10px;overflow:hidden}
+.vt th{text-align:left;padding:.6rem .8rem;background:var(--plaque);color:#fff;font-family:var(--head);font-size:1.05rem;letter-spacing:.03em}
+.vt td{padding:.55rem .8rem;border-top:1px solid var(--line);vertical-align:top}
+.vt tr.grp th{background:var(--soft);color:var(--ink);font-size:1.15rem}
+.vt .em{font-size:1.6rem;width:3.2rem}
+.vt .fr{font-weight:700;color:var(--accent)}
+.vt .ex small{display:block}
+.cover{border:2px dashed var(--line);background:var(--bg);border-radius:6px;padding:.1em .8em;cursor:pointer;min-width:7rem;color:var(--muted)}
+.cover .blank{display:none}
+.print-title{display:none}
+@media(max-width:700px){
+  .vt thead{display:none}
+  .vt,.vt tbody{display:block}
+  .vt tr{display:grid;grid-template-columns:3rem 1fr;border-top:1px solid var(--line)}
+  .vt tr.grp{display:block}
+  .vt td{border:0;padding:.25rem .6rem}
+  .vt td.ex{grid-column:1/-1;padding-bottom:.6rem}
+  .vt td.de{grid-column:2}
+}
+
+/* Karteikarten */
+.boxes{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;align-items:end;margin:6px 0 18px;text-align:center}
+.box b{font-family:var(--head);font-size:1.3rem;display:block;line-height:1.1}
+.box .stack{height:56px;background:var(--soft);border-radius:6px;position:relative;overflow:hidden}
+.box .stack::before{content:"";position:absolute;left:0;right:0;bottom:0;height:var(--h);background:var(--plaque)}
+.box span{font-size:.78rem;color:var(--muted)}
+.stage{display:grid;justify-items:center;gap:14px}
+.scene{perspective:1300px;width:100%;max-width:540px}
+.flip{position:relative;display:block;width:100%;height:310px;background:none;border:0;padding:0;cursor:pointer;transform-style:preserve-3d;transition:transform .55s}
+.flip.is-flipped{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border-radius:16px;padding:24px;text-align:center}
+.face.front{background:var(--plaque);color:#fff;box-shadow:inset 0 0 0 7px var(--plaque),inset 0 0 0 10px #fff}
+.face.back{background:var(--surface);color:var(--ink);border:4px solid var(--plaque);transform:rotateY(180deg)}
+.face .e{font-size:3.2rem;line-height:1}
+.face .big{font-family:var(--head);font-size:2.6rem;font-weight:700;line-height:1.1}
+.face .ex{font-size:1rem;margin-top:8px}
+.face .ex small{display:block;color:inherit;opacity:.75}
+.face .tag{font-size:.8rem;opacity:.8}
+.acts{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;min-height:48px}
+.prog{width:100%;max-width:540px;display:flex;gap:12px;align-items:center;font-weight:700}
+.prog .bar{flex:1}
+.keys{color:var(--muted);font-size:.85rem;text-align:center}
+.result{max-width:560px;margin:20px auto;text-align:center;display:grid;gap:12px;justify-items:center}
+.result .score{font-family:var(--head);font-size:4rem;font-weight:700;line-height:1}
+
+/* Quiz */
+.qhead{display:flex;gap:14px;align-items:center;font-weight:700;margin:6px 0 14px}
+.qhead .bar{flex:1}
+.combo{color:var(--muted)}
+.combo.hot{color:var(--red)}
+.qbox{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:18px;display:grid;gap:14px}
+.qtext{font-size:1.25rem}
+.qtext b{color:var(--accent)}
+.sent{font-family:var(--head);font-size:1.9rem;line-height:1.2;margin:6px 0}
+.emoji-xl{font-size:4.5rem;line-height:1.1}
+.opts{display:grid;gap:10px;grid-template-columns:1fr}
+@media(min-width:640px){.opts{grid-template-columns:1fr 1fr}}
+.opt{display:flex;gap:12px;align-items:center;text-align:left;padding:.8em 1em;border:2px solid var(--line);background:var(--surface);border-radius:10px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--plaque)}
+.opt kbd{font-family:var(--head);font-weight:700;background:var(--soft);border-radius:6px;min-width:1.8rem;text-align:center;padding:0 .3rem}
+.opt.ok{border-color:var(--green);background:var(--green-bg)}
+.opt.ko{border-color:var(--red);background:var(--red-bg)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.fb{border-radius:10px;padding:12px 14px;display:grid;gap:6px}
+.fb.ok{background:var(--green-bg);border-left:6px solid var(--green)}
+.fb.ko{background:var(--red-bg);border-left:6px solid var(--red)}
+
+/* Spiele */
+.subtabs{display:flex;gap:8px;margin:4px 0 14px;flex-wrap:wrap}
+.subtabs button{border:2px solid var(--line);background:var(--surface);border-radius:999px;padding:.35em 1em;cursor:pointer;font-weight:700}
+.subtabs button.on{border-color:var(--plaque);background:var(--soft)}
+.mem-info{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.mem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.mc{min-height:92px;border-radius:12px;border:2px solid var(--plaque);background:var(--plaque);color:#fff;font-weight:700;font-family:var(--head);font-size:1.4rem;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4px;line-height:1.15}
+.mc.up{background:var(--surface);color:var(--ink);cursor:default}
+.mc.up.fr{font-size:1.25rem}
+.mc.done{background:var(--green-bg);border-color:var(--green)}
+.mc .em{font-size:1.7rem}
+.mc:disabled{opacity:1}
+.typing{display:grid;gap:12px;justify-items:center;text-align:center}
+.typing .emoji-xl{margin:0}
+.typing .row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.typing input{font-size:1.3rem;text-align:center;min-width:min(78vw,300px)}
+.accents{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.accents button{min-width:2.3rem}
+.map{width:100%;height:auto;display:block;margin:10px 0;background:var(--surface);border-radius:12px;border:1.5px solid var(--line)}
+.map .street{fill:var(--line)}
+.map .dash{stroke:var(--surface);stroke-width:3;stroke-dasharray:14 10}
+.map .stname{font-size:13px;fill:var(--muted);font-family:var(--head);letter-spacing:.05em}
+.map .bld{cursor:pointer}
+.map .bld rect.b{fill:var(--bg);stroke:var(--plaque);stroke-width:3}
+.map .bld:hover rect.b{fill:var(--soft)}
+.map .bld.good rect.b{fill:var(--green-bg);stroke:var(--green)}
+.map .bld.bad rect.b{fill:var(--red-bg);stroke:var(--red)}
+.map .bld.off{pointer-events:none}
+.map .bld:focus-visible rect.b{stroke:var(--focus);stroke-width:6}
+.map .bld:focus{outline:none}
+.map .em{font-size:34px}
+.map .lb{font-size:17px;font-weight:700;fill:var(--ink)}
+.map .door{fill:var(--yellow)}
+
+/* Erfolge */
+.statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:12px 0 22px}
+.statgrid div{background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:10px 14px}
+.statgrid b{display:block;font-family:var(--head);font-size:2rem;line-height:1.1}
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin:12px 0 24px}
+.badge{display:flex;gap:12px;align-items:center;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:10px 12px}
+.badge .bi{font-size:2rem;width:3rem;height:3rem;display:grid;place-items:center;border-radius:50%;background:var(--yellow);flex:none}
+.badge.lock{opacity:.6}
+.badge.lock .bi{background:var(--line);filter:grayscale(1)}
+.badge small{display:block;line-height:1.3}
+.danger-zone{margin-top:26px;border:2px dashed var(--red);border-radius:12px;padding:14px 18px;display:grid;gap:10px;justify-items:start}
+
+/* Dialog und Toast */
+dialog{border:3px solid var(--plaque);border-radius:16px;background:var(--surface);color:var(--ink);max-width:440px;width:calc(100vw - 32px);padding:20px}
+dialog::backdrop{background:rgba(8,16,32,.6)}
+dialog .stack{display:grid;gap:10px;margin-top:14px}
+.toasts{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));display:grid;gap:8px;z-index:60;width:min(92vw,420px);pointer-events:none}
+.toast{background:var(--ink);color:var(--bg);padding:.7em 1em;border-radius:10px;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.toast.badge-t{background:var(--yellow);color:#14233A}
+.toast.level{background:var(--plaque);color:#fff}
+
+@media(max-width:520px){
+  body{font-size:16px}
+  .mem-grid{gap:7px}
+  .mc{min-height:80px;font-size:1.15rem}
+  .flip{height:290px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media print{
+  :root{padding:0}
+  body{background:#fff;color:#000;font-size:12pt}
+  .top,.tabs,.toolbar,.no-print,.toasts,.icon{display:none!important}
+  .print-title{display:block;font-family:var(--head);font-size:1.6rem;margin-bottom:8px}
+  .vt{border:1px solid #000}
+  .vt th{background:#fff!important;color:#000!important;border-bottom:2px solid #000}
+  .vt tr.grp th{background:#eee!important}
+  .vt td{border-top:1px solid #999}
+  .vt .fr{color:#000}
+  .cover{border:0;background:none}
+  .cover .screen{display:none}
+  .cover .blank{display:inline-block;width:9rem;border-bottom:1px solid #000;height:1.2rem}
+  tr{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="plate"><span class="rue">Französisch A1, Wortfeld</span><h1>La ville</h1></div>
+    </div>
+    <div class="hud" aria-label="Dein Fortschritt">
+      <div class="lvl">
+        <span class="lvl-n" id="h-lvl">1</span>
+        <div><b id="h-title">Touriste</b><div class="bar"><i id="h-bar"></i></div><small id="h-xp">0 / 100 XP</small></div>
+      </div>
+      <div class="stat"><b id="h-streak">0</b><small>Tage in Folge</small></div>
+      <div class="stat ring">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bg" cx="20" cy="20" r="16" pathLength="100"/><circle class="fg" id="h-ring" cx="20" cy="20" r="16" pathLength="100"/></svg>
+        <span id="h-goal">0</span><small>Tagesziel</small>
+      </div>
+      <button class="btn alt" data-act="openReset" type="button">Zurücksetzen</button>
+    </div>
+  </header>
+  <nav class="tabs" aria-label="Bereiche">
+    <button type="button" data-act="tab" data-t="wortfeld">Wortfeld</button>
+    <button type="button" data-act="tab" data-t="liste">Vokabeln</button>
+    <button type="button" data-act="tab" data-t="karten">Karteikarten</button>
+    <button type="button" data-act="tab" data-t="quiz">Quiz</button>
+    <button type="button" data-act="tab" data-t="spiele">Spiele</button>
+    <button type="button" data-act="tab" data-t="erfolge">Erfolge</button>
+  </nav>
+  <main id="view"></main>
+</div>
+
+<dialog id="dlg" aria-labelledby="dlg-t">
+  <h3 id="dlg-t">Was soll zurückgesetzt werden?</h3>
+  <p class="mini">Das Zurücksetzen kann nicht rückgängig gemacht werden.</p>
+  <div class="stack">
+    <button class="btn alt" type="button" data-act="resetCards">Nur Karteikarten (alle Wörter zurück auf „Neu“)</button>
+    <button class="btn alt" type="button" data-act="resetRecords">Statistik und Spiel-Rekorde</button>
+    <button class="btn danger" type="button" data-act="resetAll">Alles (XP, Serie, Abzeichen, Karteikarten)</button>
+    <button class="btn" type="button" data-act="closeDlg">Abbrechen</button>
+  </div>
+</dialog>
+<div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+<noscript>Diese Lern-App benötigt JavaScript.</noscript>
+
+<script>
+(function(){
+'use strict';
+
+/* ================= Daten ================= */
+var CATS=[
+  {id:'ville',name:'Stadt & Orte',icon:'🏙️'},
+  {id:'bat',name:'Gebäude',icon:'🏛️'},
+  {id:'shop',name:'Geschäfte',icon:'🛍️'},
+  {id:'trans',name:'Verkehr',icon:'🚌'},
+  {id:'orient',name:'Orientierung',icon:'🧭'},
+  {id:'phrase',name:'Wegbeschreibung',icon:'💬'}
+];
+// [Kategorie, Artikel (le|la|lm|lf|''), Wort, Deutsch, Emoji, Beispiel FR, Beispiel DE, Anzeige]
+var RAW=[
+ ["ville","la","ville","Stadt","🏙️","J'habite dans une grande ville.","Ich wohne in einer großen Stadt."],
+ ["ville","le","village","Dorf","🏡","Mon grand-père habite dans un village.","Mein Großvater wohnt in einem Dorf."],
+ ["ville","la","rue","Straße","🛣️","La rue est calme le dimanche.","Die Straße ist sonntags ruhig."],
+ ["ville","la","place","Platz","⛲","Il y a un marché sur la place.","Auf dem Platz ist ein Markt."],
+ ["ville","le","centre-ville","Stadtzentrum","🌆","Nous allons au centre-ville.","Wir gehen ins Stadtzentrum."],
+ ["ville","le","quartier","Viertel","🏘️","J'aime mon quartier.","Ich mag mein Viertel."],
+ ["ville","le","plan","Stadtplan","🗺️","Regarde le plan de la ville !","Schau auf den Stadtplan!"],
+ ["ville","le","pont","Brücke","🌉","Le pont est très vieux.","Die Brücke ist sehr alt."],
+ ["ville","le","parc","Park","🌳","Les enfants jouent dans le parc.","Die Kinder spielen im Park."],
+
+ ["bat","la","mairie","Rathaus","🏛️","La mairie est à côté de l'église.","Das Rathaus ist neben der Kirche."],
+ ["bat","lf","église","Kirche","⛪","L'église est très belle.","Die Kirche ist sehr schön."],
+ ["bat","lf","école","Schule","🏫","Mon frère va à l'école.","Mein Bruder geht zur Schule."],
+ ["bat","la","bibliothèque","Bibliothek","📚","Je lis à la bibliothèque.","Ich lese in der Bibliothek."],
+ ["bat","le","musée","Museum","🖼️","Le musée est ouvert aujourd'hui.","Das Museum ist heute geöffnet."],
+ ["bat","le","cinéma","Kino","🎬","On va au cinéma ce soir ?","Gehen wir heute Abend ins Kino?"],
+ ["bat","le","théâtre","Theater","🎭","Le théâtre est près du parc.","Das Theater ist in der Nähe des Parks."],
+ ["bat","la","piscine","Schwimmbad","🏊","Il y a une piscine dans le quartier.","Im Viertel gibt es ein Schwimmbad."],
+ ["bat","le","stade","Stadion","🏟️","Le stade est grand.","Das Stadion ist groß."],
+ ["bat","lm","hôpital","Krankenhaus","🏥","L'hôpital est en face de la gare.","Das Krankenhaus ist gegenüber vom Bahnhof."],
+ ["bat","la","gare","Bahnhof","🚉","La gare est loin du centre.","Der Bahnhof ist weit vom Zentrum entfernt."],
+ ["bat","lm","hôtel","Hotel","🏨","L'hôtel est derrière la mairie.","Das Hotel ist hinter dem Rathaus."],
+ ["bat","le","château","Schloss","🏰","Le château est très célèbre.","Das Schloss ist sehr berühmt."],
+ ["bat","la","tour","Turm","🗼","La tour Eiffel est à Paris.","Der Eiffelturm ist in Paris."],
+
+ ["shop","le","supermarché","Supermarkt","🛒","Je fais les courses au supermarché.","Ich kaufe im Supermarkt ein."],
+ ["shop","la","boulangerie","Bäckerei","🥖","La boulangerie ouvre à sept heures.","Die Bäckerei öffnet um sieben Uhr."],
+ ["shop","la","pharmacie","Apotheke","💊","La pharmacie est à gauche.","Die Apotheke ist links."],
+ ["shop","le","marché","Markt","🍎","Je vais au marché le samedi.","Ich gehe samstags auf den Markt."],
+ ["shop","le","café","Café","☕","Rendez-vous au café !","Treffen wir uns im Café!"],
+ ["shop","le","restaurant","Restaurant","🍽️","Le restaurant est complet.","Das Restaurant ist voll."],
+ ["shop","la","librairie","Buchhandlung","📖","J'achète un livre à la librairie.","Ich kaufe ein Buch in der Buchhandlung."],
+ ["shop","la","poste","Post","📮","La poste est fermée le dimanche.","Die Post ist sonntags geschlossen."],
+ ["shop","la","banque","Bank","🏦","La banque est à côté de la poste.","Die Bank ist neben der Post."],
+ ["shop","le","magasin","Geschäft","🛍️","Ce magasin est cher.","Dieses Geschäft ist teuer."],
+
+ ["trans","le","bus","Bus","🚌","Je prends le bus pour aller à l'école.","Ich nehme den Bus zur Schule."],
+ ["trans","le","métro","U-Bahn","🚇","Le métro est rapide.","Die U-Bahn ist schnell."],
+ ["trans","le","tramway","Straßenbahn","🚋","Le tramway passe toutes les dix minutes.","Die Straßenbahn kommt alle zehn Minuten."],
+ ["trans","le","train","Zug","🚆","Le train arrive à midi.","Der Zug kommt um zwölf Uhr an."],
+ ["trans","la","voiture","Auto","🚗","Ma mère a une voiture rouge.","Meine Mutter hat ein rotes Auto."],
+ ["trans","le","vélo","Fahrrad","🚲","Je vais au parc à vélo.","Ich fahre mit dem Fahrrad zum Park."],
+ ["trans","lm","arrêt de bus","Bushaltestelle","🚏","L'arrêt de bus est devant l'école.","Die Bushaltestelle ist vor der Schule."],
+ ["trans","le","feu","Ampel","🚦","Le feu est rouge.","Die Ampel ist rot."],
+ ["trans","le","parking","Parkplatz","🅿️","Il y a un parking près du stade.","Beim Stadion gibt es einen Parkplatz."],
+
+ ["orient","","à gauche","links","⬅️","La poste est à gauche.","Die Post ist links."],
+ ["orient","","à droite","rechts","➡️","La banque est à droite.","Die Bank ist rechts."],
+ ["orient","","tout droit","geradeaus","⬆️","Allez tout droit.","Gehen Sie geradeaus."],
+ ["orient","","à côté de","neben","↔️","Le café est à côté de la banque.","Das Café ist neben der Bank."],
+ ["orient","","en face de","gegenüber von","⇄","Le musée est en face de la gare.","Das Museum ist gegenüber vom Bahnhof."],
+ ["orient","","devant","vor","🔼","Le bus est devant l'hôtel.","Der Bus steht vor dem Hotel."],
+ ["orient","","derrière","hinter","🔽","Le parc est derrière l'école.","Der Park ist hinter der Schule."],
+ ["orient","","près de","in der Nähe von","📌","Le stade est près de la piscine.","Das Stadion ist in der Nähe des Schwimmbads."],
+ ["orient","","loin de","weit weg von","🔭","La gare est loin de l'hôtel.","Der Bahnhof ist weit weg vom Hotel."],
+ ["orient","","entre","zwischen","🥪","La banque est entre la poste et le café.","Die Bank ist zwischen der Post und dem Café."],
+
+ ["phrase","","Où est","Wo ist …?","📍","Où est la gare, s'il vous plaît ?","Wo ist der Bahnhof, bitte?","Où est… ?"],
+ ["phrase","","Pardon","Entschuldigung!","🙋","Pardon, madame ! Où est la poste ?","Entschuldigung, Madame! Wo ist die Post?","Pardon !"],
+ ["phrase","","Comment aller à","Wie komme ich zu …?","🧭","Comment aller à la mairie ?","Wie komme ich zum Rathaus?","Comment aller à… ?"],
+ ["phrase","","Je cherche","Ich suche …","🔎","Je cherche la pharmacie.","Ich suche die Apotheke.","Je cherche…"],
+ ["phrase","","Tournez","Biegen Sie ab","↪️","Tournez à gauche, puis à droite.","Biegen Sie links ab, dann rechts."],
+ ["phrase","","Traversez","Überqueren Sie","🚸","Traversez la place.","Überqueren Sie den Platz."],
+ ["phrase","","Continuez","Gehen Sie weiter","⏩","Continuez tout droit.","Gehen Sie weiter geradeaus."],
+ ["phrase","","C'est loin","Ist es weit?","❓","C'est loin ? Non, c'est à cinq minutes.","Ist es weit? Nein, es sind fünf Minuten.","C'est loin ?"],
+ ["phrase","","Merci beaucoup","Vielen Dank!","🙏","Merci beaucoup, monsieur !","Vielen Dank, mein Herr!","Merci beaucoup !"]
+];
+function escRe(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}
+var W=RAW.map(function(r,i){
+  var art=r[1],pre='';
+  if(art==='le')pre='le ';else if(art==='la')pre='la ';else if(art==='lm'||art==='lf')pre="l'";
+  var re=new RegExp(escRe(r[2]),'i');
+  return {id:i,cat:r[0],art:art,noun:r[2],de:r[3],em:r[4],ex:r[5],exde:r[6],
+    pre:pre,fr:r[7]||(pre+r[2]),
+    g:(art==='le'||art==='lm')?'m':(art==='la'||art==='lf')?'f':'',
+    cloze:re.test(r[5])?r[5].replace(re,'_____'):null};
+});
+function artKey(w){return w.art==='le'?'le':w.art==='la'?'la':"l'"}
+
+/* ================= Hilfsfunktionen ================= */
+function $(s,r){return (r||document).querySelector(s)}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function wordsIn(cat){return cat==='all'?W:W.filter(function(w){return w.cat===cat})}
+function catOf(id){return CATS.filter(function(c){return c.id===id})[0]}
+function deacc(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'')}
+function loose(s){return deacc(s.toLowerCase()).replace(/[’'`´\-]/g,' ').replace(/\s+/g,' ').trim()}
+function fmtT(ms){var s=Math.floor(ms/1000);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')}
+var canSpeak=('speechSynthesis' in window)&&('SpeechSynthesisUtterance' in window);
+function speak(text){
+  if(!canSpeak)return;
+  try{
+    window.speechSynthesis.cancel();
+    var u=new SpeechSynthesisUtterance(text);u.lang='fr-FR';u.rate=.85;
+    var v=window.speechSynthesis.getVoices().filter(function(v){return v.lang&&v.lang.toLowerCase().indexOf('fr')===0})[0];
+    if(v)u.voice=v;
+    window.speechSynthesis.speak(u);
+  }catch(e){}
+}
+function spk(text){return canSpeak?'<button class="icon" type="button" data-act="say" data-t="'+esc(text)+'" aria-label="Aussprache anhören">🔊</button>':''}
+function toast(msg,kind){
+  var box=$('#toasts');if(!box)return;
+  var d=document.createElement('div');d.className='toast '+(kind||'');d.textContent=msg;box.appendChild(d);
+  setTimeout(function(){if(d.parentNode)d.parentNode.removeChild(d)},3600);
+}
+
+/* ================= Zustand (speicherbar, rücksetzbar) ================= */
+var KEY='ville-a1-v1';
+function defaultState(){return {xp:0,streak:0,lastDay:'',dayStamp:'',dayXp:0,boxes:{},
+  stats:{ok:0,ko:0,quizzes:0,perfect:0,bestCombo:0,typedBest:0,flash:0},
+  best:{memory:null,typing:0,map:0},badges:{}}}
+function load(){
+  var d=defaultState();
+  try{
+    var s=window.localStorage.getItem(KEY);
+    if(s){var o=JSON.parse(s);
+      Object.keys(d).forEach(function(k){
+        if(o[k]!==undefined){ d[k]=(typeof d[k]==='object'&&d[k]!==null&&!Array.isArray(d[k]))?Object.assign(d[k],o[k]):o[k] }
+      });
+    }
+  }catch(e){}
+  return d;
+}
+var state=load();
+function save(){try{window.localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
+
+var LEVEL_XP=100,DAILY=60;
+var TITLES=['Touriste','Flâneur','Voyageur','Habitant','Parisien','Guide','Conseiller','Maire'];
+function level(xp){return Math.floor(xp/LEVEL_XP)+1}
+function title(l){return TITLES[Math.min(l-1,TITLES.length-1)]}
+function pad(n){return String(n).padStart(2,'0')}
+function dstr(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
+function today(){return dstr(new Date())}
+function yesterday(){var d=new Date();d.setDate(d.getDate()-1);return dstr(d)}
+
+var BADGES=[
+ {id:'start',icon:'🚶',name:'Erster Schritt',desc:'Beantworte deine erste Karteikarte.',test:function(s){return Object.keys(s.boxes).length>=1}},
+ {id:'seen20',icon:'🧳',name:'Reisegepäck',desc:'Lerne 20 Wörter kennen.',test:function(s){return Object.keys(s.boxes).length>=20}},
+ {id:'seenall',icon:'🗺️',name:'Stadtkenner',desc:'Lerne alle Wörter kennen.',test:function(s){return Object.keys(s.boxes).length>=W.length}},
+ {id:'box3',icon:'📦',name:'Fach für Fach',desc:'Bringe ein Wort in Fach 3.',test:function(s){return Object.keys(s.boxes).some(function(k){return s.boxes[k]>=3})}},
+ {id:'master10',icon:'🎓',name:'Zehn Meister',desc:'10 Wörter in Fach 5.',test:function(s){return Object.keys(s.boxes).filter(function(k){return s.boxes[k]===5}).length>=10}},
+ {id:'quiz1',icon:'📝',name:'Quiz-Start',desc:'Beende eine Quizrunde.',test:function(s){return s.stats.quizzes>=1}},
+ {id:'perfect',icon:'💯',name:'Parfait',desc:'Quiz mit 10 von 10.',test:function(s){return s.stats.perfect>=1}},
+ {id:'combo7',icon:'🔥',name:'Combo-König',desc:'7 richtige Quizantworten in Folge.',test:function(s){return s.stats.bestCombo>=7}},
+ {id:'memory',icon:'🧠',name:'Gedächtnis-Profi',desc:'Memory in höchstens 14 Zügen.',test:function(s){return s.best.memory!==null&&s.best.memory<=14}},
+ {id:'typing',icon:'⌨️',name:'Schönschreiber',desc:'5 Wörter in Folge richtig tippen.',test:function(s){return s.stats.typedBest>=5}},
+ {id:'map',icon:'📍',name:'Stadtführer',desc:'Stadtplan-Rallye mit 8 von 8.',test:function(s){return s.best.map>=8}},
+ {id:'streak3',icon:'📅',name:'Stammgast',desc:'3 Tage in Folge lernen.',test:function(s){return s.streak>=3}},
+ {id:'maire',icon:'🎖️',name:'Monsieur le Maire',desc:'Erreiche Niveau 8.',test:function(s){return level(s.xp)>=8}}
+];
+function checkBadges(){
+  BADGES.forEach(function(b){
+    if(!state.badges[b.id]&&b.test(state)){state.badges[b.id]=Date.now();toast(b.icon+' Abzeichen: '+b.name,'badge-t')}
+  });
+}
+function commit(){checkBadges();save();updateHud()}
+function addXp(n){
+  var t=today();
+  if(state.dayStamp!==t){state.dayStamp=t;state.dayXp=0}
+  if(state.lastDay!==t){state.streak=(state.lastDay===yesterday())?state.streak+1:1;state.lastDay=t}
+  var before=level(state.xp);
+  state.xp+=n;state.dayXp+=n;
+  var after=level(state.xp);
+  if(after>before)toast('Niveau '+after+': '+title(after),'level');
+  commit();
+}
+function updateHud(){
+  var l=level(state.xp),into=state.xp%LEVEL_XP;
+  $('#h-lvl').textContent=l;
+  $('#h-title').textContent=title(l);
+  $('#h-bar').style.width=(into/LEVEL_XP*100)+'%';
+  $('#h-xp').textContent=into+' / '+LEVEL_XP+' XP (gesamt '+state.xp+')';
+  var alive=state.lastDay===today()||state.lastDay===yesterday();
+  $('#h-streak').textContent=alive?state.streak:0;
+  var dx=state.dayStamp===today()?state.dayXp:0;
+  $('#h-goal').textContent=Math.min(dx,DAILY)+'/'+DAILY;
+  $('#h-ring').style.strokeDashoffset=100-Math.min(1,dx/DAILY)*100;
+}
+
+/* ================= Sitzungs-Zustände ================= */
+var current='wortfeld';
+var F={cat:'all'};
+var wfOpen={};
+var ls={q:'',mode:'both',rev:{}};
+function newFc(dir){return {dir:dir||'fr2de',queue:[],i:0,flipped:false,first:0,n:0,xp:0,finished:false,built:false}}
+var fc=newFc();
+var qz=null,mem=null,ty=null,mp=null,game='memory';
+function resetSessions(){fc=newFc(fc.dir);qz=null;stopTimers();mem=null;ty=null;mp=null}
+function stopTimers(){if(mem&&mem.timer){clearInterval(mem.timer);mem.timer=null}}
+
+function catSelect(){
+  return '<label class="sel">Wortfeld<select data-bind="cat"><option value="all">Alle Wörter ('+W.length+')</option>'+
+    CATS.map(function(c){return '<option value="'+c.id+'"'+(F.cat===c.id?' selected':'')+'>'+c.icon+' '+c.name+' ('+wordsIn(c.id).length+')</option>'}).join('')+'</select></label>';
+}
+function boxStrip(pool){
+  var c=[0,0,0,0,0,0];
+  pool.forEach(function(w){c[state.boxes[w.id]||0]++});
+  var mx=Math.max.apply(null,c.concat([1]));
+  return '<div class="boxes" aria-label="Karteikasten">'+c.map(function(n,i){
+    return '<div class="box"><b>'+n+'</b><div class="stack" style="--h:'+Math.round(n/mx*100)+'%"></div><span>'+(i===0?'Neu':'Fach '+i)+'</span></div>';
+  }).join('')+'</div>';
+}
+
+/* ================= Ansicht: Wortfeld ================= */
+function chipHtml(w){
+  var open=!!wfOpen[w.id];
+  return '<button class="chip'+(open?' open':'')+'" type="button" data-act="chip" data-id="'+w.id+'">'+w.em+' '+esc(w.fr)+(open?'<em>'+esc(w.de)+'</em>':'')+'</button>';
+}
+function vWortfeld(){
+  var h='<section class="hero"><button class="sign" type="button" data-act="sayCity" aria-label="la ville anhören"><small>Wortfeld</small><strong>la ville</strong><em>die Stadt</em></button>'+
+    '<p class="mini">Tippe auf ein Wort, um die deutsche Übersetzung zu sehen. Das Wort wird dir dabei vorgelesen, sofern dein Gerät das unterstützt.</p></section>';
+  h+='<div class="clusters">'+CATS.map(function(c){
+    var ws=wordsIn(c.id);
+    return '<section class="cluster"><h3><span aria-hidden="true">'+c.icon+'</span>'+c.name+'<small>'+ws.length+' Wörter</small></h3><div class="chips">'+ws.map(chipHtml).join('')+'</div></section>';
+  }).join('')+'</div>';
+  h+='<aside class="note"><h3>Merkkasten</h3><ul>'+
+    '<li><b>Artikel:</b> le (männlich), la (weiblich), l\' vor Vokal oder stummem h: <i>l\'église, l\'hôtel</i>.</li>'+
+    '<li><b>à + Artikel:</b> à + le = <b>au</b> (au musée), à + la = à la, à + l\' = à l\'.</li>'+
+    '<li><b>de + Artikel:</b> de + le = <b>du</b> (à côté du café), de + la = de la, de + l\' = de l\'.</li>'+
+    '<li><b>Il y a …</b> = es gibt …; <b>C\'est …</b> = das ist …</li></ul>'+
+    '<details><summary>Mini-Dialog anzeigen</summary><p><b>– Pardon, madame, où est la gare ?</b><br><b>– Tournez à droite, puis continuez tout droit.</b><br><b>– C\'est loin ?</b><br><b>– Non, c\'est près de la poste.</b><br><b>– Merci beaucoup !</b></p>'+
+    '<p class="mini">Entschuldigung, wo ist der Bahnhof? Biegen Sie rechts ab und gehen Sie dann geradeaus. Ist es weit? Nein, es ist in der Nähe der Post. Vielen Dank!</p></details></aside>';
+  return h;
+}
+
+/* ================= Ansicht: Vokabelliste ================= */
+function coverCell(w,txt){
+  if(!ls.rev[w.id])return '<button class="cover" type="button" data-act="rev" data-id="'+w.id+'"><span class="screen">aufdecken</span><span class="blank"></span></button>';
+  return esc(txt);
+}
+function listRows(){
+  var q=loose(ls.q),out='',total=0;
+  CATS.forEach(function(c){
+    if(F.cat!=='all'&&F.cat!==c.id)return;
+    var ws=wordsIn(c.id).filter(function(w){return !q||loose(w.fr).indexOf(q)>=0||loose(w.de).indexOf(q)>=0});
+    if(!ws.length)return;
+    total+=ws.length;
+    out+='<tr class="grp"><th colspan="4">'+c.icon+' '+c.name+'</th></tr>';
+    ws.forEach(function(w){
+      var fr=(ls.mode==='hideFr')?coverCell(w,w.fr):esc(w.fr);
+      var de=(ls.mode==='hideDe')?coverCell(w,w.de):esc(w.de);
+      var ex=(ls.mode==='both')?esc(w.ex)+'<small>'+esc(w.exde)+'</small>':'';
+      out+='<tr><td class="em" aria-hidden="true">'+w.em+'</td><td class="fr" data-label="Französisch">'+fr+(ls.mode!=='hideFr'?' '+spk(w.fr):'')+(w.g?' <small>('+w.g+')</small>':'')+'</td><td class="de" data-label="Deutsch">'+de+'</td><td class="ex" data-label="Beispiel">'+ex+'</td></tr>';
+    });
+  });
+  if(!total)out='<tr><td colspan="4">Kein Treffer. Prüfe die Suche oder wähle ein anderes Wortfeld.</td></tr>';
+  return out;
+}
+function vListe(){
+  return '<div class="toolbar">'+catSelect()+
+    '<label>Suche<input id="ls-q" type="search" value="'+esc(ls.q)+'" placeholder="z. B. gare oder Bahnhof"></label>'+
+    '<label>Anzeige<select data-bind="lsMode"><option value="both"'+(ls.mode==='both'?' selected':'')+'>Alles zeigen</option><option value="hideFr"'+(ls.mode==='hideFr'?' selected':'')+'>Französisch verdecken</option><option value="hideDe"'+(ls.mode==='hideDe'?' selected':'')+'>Deutsch verdecken</option></select></label>'+
+    '<button class="btn alt" type="button" data-act="print">Arbeitsblatt drucken</button></div>'+
+    '<p class="mini no-print">Verdecke eine Spalte zum Selbsttest oder drucke die Liste als Arbeitsblatt mit Lücken. (m) und (f) zeigen das Genus.</p>'+
+    '<div class="print-title">Französisch A1: La ville, Wortfeld Stadt. Name: ______________</div>'+
+    '<table class="vt"><thead><tr><th></th><th>Französisch</th><th>Deutsch</th><th>Beispiel</th></tr></thead><tbody id="ls-body">'+listRows()+'</tbody></table>';
+}
+
+/* ================= Ansicht: Karteikarten (Leitner) ================= */
+function fcBuild(){
+  var pool=wordsIn(F.cat);
+  var byBox=function(a,b){return (state.boxes[a.id]||0)-(state.boxes[b.id]||0)};
+  var learn=shuffle(pool.filter(function(w){return state.boxes[w.id]&&state.boxes[w.id]<5})).sort(byBox).slice(0,10);
+  var fresh=shuffle(pool.filter(function(w){return !state.boxes[w.id]})).slice(0,6);
+  var sel=learn.concat(fresh);
+  if(sel.length<6)sel=sel.concat(shuffle(pool.filter(function(w){return state.boxes[w.id]===5})).slice(0,6-sel.length));
+  fc.queue=shuffle(sel).map(function(w){return {w:w,dir:fc.dir==='mix'?(Math.random()<.5?'fr2de':'de2fr'):fc.dir,retry:false}});
+  fc.i=0;fc.flipped=false;fc.first=0;fc.xp=0;fc.n=fc.queue.length;fc.finished=false;fc.built=true;
+}
+function fcFaces(c){
+  var w=c.w;
+  var ex='<span class="ex">'+esc(w.ex)+'<small>'+esc(w.exde)+'</small></span>';
+  if(c.dir==='fr2de'){
+    return '<span class="face front"><span class="e">'+w.em+'</span><span class="big">'+esc(w.fr)+'</span><span class="tag">Was heißt das auf Deutsch?</span></span>'+
+           '<span class="face back"><span class="big">'+esc(w.de)+'</span>'+ex+'</span>';
+  }
+  return '<span class="face front"><span class="e">'+w.em+'</span><span class="big">'+esc(w.de)+'</span><span class="tag">Wie heißt das auf Französisch?</span></span>'+
+         '<span class="face back"><span class="big">'+esc(w.fr)+'</span>'+ex+'</span>';
+}
+function fcActions(){
+  if(!fc.flipped)return '<button class="btn" type="button" data-act="flip">Antwort zeigen</button>';
+  var c=fc.queue[fc.i];
+  return '<button class="btn bad" type="button" data-act="fcKo">Noch nicht</button>'+spk(c.w.fr)+'<button class="btn good" type="button" data-act="fcOk">Gewusst</button>';
+}
+function vKarten(){
+  if(!fc.built)fcBuild();
+  var pool=wordsIn(F.cat);
+  var head='<div class="toolbar">'+catSelect()+
+    '<label>Richtung<select data-bind="fcDir"><option value="fr2de"'+(fc.dir==='fr2de'?' selected':'')+'>Französisch zu Deutsch</option><option value="de2fr"'+(fc.dir==='de2fr'?' selected':'')+'>Deutsch zu Französisch</option><option value="mix"'+(fc.dir==='mix'?' selected':'')+'>Gemischt</option></select></label></div>'+
+    '<p class="mini">Karteikasten nach Leitner: Gewusste Karten wandern ein Fach weiter, nicht gewusste zurück in Fach 1. In Fach 5 gilt ein Wort als gemeistert.</p>'+boxStrip(pool);
+  if(fc.finished){
+    return head+'<div class="result"><div class="score">'+fc.first+' von '+fc.n+'</div><p>Karten gleich beim ersten Mal gewusst. Du hast in dieser Runde <b>'+fc.xp+' XP</b> gesammelt.</p><div class="acts"><button class="btn" type="button" data-act="fcNew">Nächste Runde</button><button class="btn alt" type="button" data-act="openReset">Karteikarten zurücksetzen</button></div></div>';
+  }
+  var c=fc.queue[fc.i];
+  return head+'<div class="stage"><div class="prog"><span>'+(fc.i+1)+' / '+fc.queue.length+'</span><div class="bar"><i style="width:'+(fc.i/fc.queue.length*100)+'%"></i></div><span>Fach '+(state.boxes[c.w.id]||'Neu')+'</span></div>'+
+    '<div class="scene"><button class="flip'+(fc.flipped?' is-flipped':'')+'" type="button" data-act="flip" aria-label="Karte umdrehen">'+fcFaces(c)+'</button></div>'+
+    '<div class="acts" id="fc-actions">'+fcActions()+'</div>'+
+    '<p class="keys">Tastatur: Leertaste dreht um, Pfeil links oder 1 = noch nicht, Pfeil rechts oder 2 = gewusst.</p></div>';
+}
+function fcAnswer(ok){
+  var cur=fc.queue[fc.i];if(!cur||!fc.flipped)return;
+  var id=cur.w.id,old=state.boxes[id]||0;
+  state.boxes[id]=ok?Math.min(5,(old||1)+1):1;
+  state.stats.flash++;
+  if(ok){state.stats.ok++;if(!cur.retry)fc.first++}
+  else{state.stats.ko++;if(!cur.retry)fc.queue.push({w:cur.w,dir:cur.dir,retry:true})}
+  var gain=ok?(old===0?8:5):1;
+  fc.xp+=gain;fc.i++;fc.flipped=false;
+  if(fc.i>=fc.queue.length)fc.finished=true;
+  addXp(gain);render();
+}
+
+/* ================= Ansicht: Quiz ================= */
+function distract(w,label,n,pred){
+  var others=W.filter(function(x){return x.id!==w.id});
+  var t1=shuffle(others.filter(function(x){return x.cat===w.cat&&(!pred||pred(x))}));
+  var t2=shuffle(others.filter(function(x){return !pred||pred(x)}));
+  var t3=shuffle(others);
+  var seen={},out=[];seen[label(w)]=1;
+  t1.concat(t2,t3).forEach(function(x){var l=label(x);if(!seen[l]&&out.length<n){seen[l]=1;out.push(l)}});
+  return out;
+}
+var EMOJI_CATS=['ville','bat','shop','trans'];
+function okType(t,w){
+  if(t==='art')return !!w.art;
+  if(t==='cloze')return !!w.cloze;
+  if(t==='emoji')return EMOJI_CATS.indexOf(w.cat)>=0;
+  if(t==='listen')return canSpeak;
+  return true;
+}
+function makeQ(t,w){
+  var opts,prompt,audio=null,explain='';
+  var mk=function(correct,wrong){return shuffle([{t:correct,ok:true}].concat(wrong.map(function(x){return {t:x,ok:false}})))};
+  if(t==='fr2de'){prompt='Was bedeutet <b>'+esc(w.fr)+'</b>?';opts=mk(w.de,distract(w,function(x){return x.de},3))}
+  else if(t==='de2fr'){prompt='Wie heißt <b>'+esc(w.de)+'</b> auf Französisch?';opts=mk(w.fr,distract(w,function(x){return x.fr},3))}
+  else if(t==='art'){
+    prompt='Welcher Artikel passt? <b>… '+esc(w.noun)+'</b> ('+esc(w.de)+')';
+    var k=artKey(w);opts=['le','la',"l'"].map(function(a){return {t:a,ok:a===k}});
+    explain='Vor Vokal oder stummem h steht l\'. Sonst le (männlich) oder la (weiblich).';
+  }
+  else if(t==='cloze'){
+    prompt='Ergänze den Satz:<div class="sent">'+esc(w.cloze)+'</div><small>'+esc(w.exde)+'</small>';
+    opts=mk(w.noun,distract(w,function(x){return x.noun},3,function(x){return x.art===w.art}));
+  }
+  else if(t==='emoji'){prompt='Welches Wort passt zum Bild?<div class="emoji-xl" aria-hidden="true">'+w.em+'</div>';opts=mk(w.fr,distract(w,function(x){return x.fr},3,function(x){return EMOJI_CATS.indexOf(x.cat)>=0}))}
+  else{prompt='Hör zu: Was bedeutet das Wort?';audio=w.fr;opts=mk(w.de,distract(w,function(x){return x.de},3))}
+  return {type:t,w:w,prompt:prompt,opts:opts,audio:audio,explain:explain,spoken:false};
+}
+function qzBuild(){
+  var pool=wordsIn(F.cat);if(pool.length<4)pool=W;
+  var order=shuffle(pool),list=[],types=['fr2de','de2fr','art','cloze','emoji','listen'];
+  for(var k=0;list.length<10;k++){
+    var w=order[k%order.length];
+    var ok=types.filter(function(t){return okType(t,w)});
+    list.push(makeQ(ok[Math.floor(Math.random()*ok.length)],w));
+  }
+  return {list:list,i:0,score:0,combo:0,maxCombo:0,answered:false,pick:null,xp:0,gain:0,done:false,bonus:0};
+}
+function vQuiz(){
+  if(!qz)qz=qzBuild();
+  var head=catSelect().replace('<label class="sel">','<div class="toolbar"><label class="sel">')+'</div>';
+  if(qz.done){
+    var msg=qz.score===10?'Parfait! Alles richtig.':qz.score>=7?'Très bien! Stark gemacht.':qz.score>=4?'Pas mal! Üb ein bisschen weiter.':'Das wird noch. Probiere die Karteikarten und dann eine neue Runde.';
+    return head+'<div class="result"><div class="score">'+qz.score+' von '+qz.list.length+'</div><p>'+msg+'</p><p>Du hast <b>'+(qz.xp+qz.bonus)+' XP</b> gesammelt'+(qz.bonus?' (inklusive '+qz.bonus+' Bonus für die perfekte Runde)':'')+'. Längste Serie: '+qz.maxCombo+'.</p><div class="acts"><button class="btn" type="button" data-act="qzNew">Neue Runde</button><button class="btn alt" type="button" data-act="tab" data-t="karten">Zu den Karteikarten</button></div></div>';
+  }
+  var q=qz.list[qz.i],w=q.w;
+  var fb='';
+  if(qz.answered){
+    var good=q.opts[qz.pick].ok;
+    var corr=q.opts.filter(function(o){return o.ok})[0].t;
+    fb='<div class="fb '+(good?'ok':'ko')+'"><b>'+(good?'Richtig! +'+qz.gain+' XP':'Nicht ganz. Richtig ist: '+esc(corr))+'</b>'+
+       '<span>'+esc(w.fr)+' = '+esc(w.de)+' '+spk(w.fr)+'</span><span>'+esc(w.ex)+' <small>'+esc(w.exde)+'</small></span>'+
+       (q.explain?'<small>'+esc(q.explain)+'</small>':'')+
+       '<div><button class="btn" type="button" data-act="qzNext">'+(qz.i<qz.list.length-1?'Weiter':'Ergebnis ansehen')+'</button></div></div>';
+  }
+  return head+'<div class="qhead"><span>Frage '+(qz.i+1)+' von '+qz.list.length+'</span><div class="bar"><i style="width:'+(qz.i/qz.list.length*100)+'%"></i></div><span class="combo'+(qz.combo>=3?' hot':'')+'">🔥 '+qz.combo+'</span></div>'+
+    '<div class="qbox"><div class="qtext">'+q.prompt+'</div>'+
+    (q.audio?'<div><button class="btn alt" type="button" data-act="say" data-t="'+esc(q.audio)+'">🔊 Noch einmal anhören</button></div>':'')+
+    '<div class="opts">'+q.opts.map(function(o,i){
+      var c='';if(qz.answered){if(o.ok)c=' ok';else if(qz.pick===i)c=' ko'}
+      return '<button class="opt'+c+'" type="button" data-act="qzPick" data-i="'+i+'"'+(qz.answered?' disabled':'')+'><kbd>'+(i+1)+'</kbd><span>'+esc(o.t)+'</span></button>';
+    }).join('')+'</div>'+fb+'</div>'+
+    '<p class="keys">Tastatur: Zifferntasten 1 bis '+q.opts.length+' wählen eine Antwort, Enter geht weiter.</p>';
+}
+function qzPick(i){
+  if(!qz||qz.answered)return;
+  var q=qz.list[qz.i];qz.answered=true;qz.pick=i;
+  if(q.opts[i].ok){
+    qz.combo++;qz.score++;qz.maxCombo=Math.max(qz.maxCombo,qz.combo);
+    var gain=10+Math.min(qz.combo-1,5)*2;qz.xp+=gain;qz.gain=gain;
+    state.stats.ok++;state.stats.bestCombo=Math.max(state.stats.bestCombo,qz.combo);
+    addXp(gain);
+  }else{
+    qz.combo=0;qz.gain=0;state.stats.ko++;
+    var b=state.boxes[q.w.id];if(b)state.boxes[q.w.id]=Math.max(1,b-1);
+    commit();
+  }
+  render();
+}
+function qzNext(){
+  if(!qz||!qz.answered)return;
+  if(qz.i<qz.list.length-1){qz.i++;qz.answered=false;qz.pick=null;render();return}
+  qz.done=true;state.stats.quizzes++;
+  if(qz.score===qz.list.length){state.stats.perfect++;qz.bonus=20;addXp(20)}else commit();
+  render();
+}
+
+/* ================= Ansicht: Spiele ================= */
+function vSpiele(){
+  var tabs=[['memory','Memory','🧠'],['typing','Tippen','⌨️'],['map','Stadtplan','🗺️']];
+  return '<div class="toolbar">'+catSelect()+'</div><div class="subtabs">'+tabs.map(function(t){
+    return '<button type="button" data-act="game" data-g="'+t[0]+'" class="'+(game===t[0]?'on':'')+'">'+t[2]+' '+t[1]+'</button>';
+  }).join('')+'</div><div id="game">'+gameHtml()+'</div>';
+}
+function gameHtml(){return game==='memory'?memHtml():game==='typing'?tyHtml():mapHtml()}
+function refreshGame(){var g=$('#game');if(g){g.innerHTML=gameHtml();if(game==='typing')focusTy()}}
+function focusTy(){setTimeout(function(){var e=$('#ty-in');if(e)e.focus()},0)}
+
+/* --- Memory --- */
+function memBuild(){
+  var pool=wordsIn(F.cat).filter(function(w){return w.cat!=='phrase'});
+  if(pool.length<8)pool=W.filter(function(w){return w.cat!=='phrase'});
+  var cards=[];
+  shuffle(pool).slice(0,8).forEach(function(w){cards.push({id:w.id,side:'fr'});cards.push({id:w.id,side:'de'})});
+  return {cards:shuffle(cards),open:[],matched:{},nm:0,moves:0,start:null,timer:null,done:false,lock:false,xp:0,rec:false,time:0};
+}
+function startMemTimer(){
+  if(mem&&mem.start&&!mem.done&&!mem.timer){
+    mem.timer=setInterval(function(){var e=$('#mem-time');if(e)e.textContent=fmtT(Date.now()-mem.start)},500);
+  }
+}
+function memHtml(){
+  if(!mem)mem=memBuild();
+  var m=mem;
+  if(m.done){
+    return '<div class="result"><div class="score">'+m.moves+' Züge</div><p>Alle Paare gefunden in '+fmtT(m.time)+'. Du bekommst <b>'+m.xp+' XP</b>.'+(m.rec?' Neuer Rekord!':'')+'</p><div class="acts"><button class="btn" type="button" data-act="memNew">Noch einmal</button></div></div>';
+  }
+  var cells=m.cards.map(function(c,i){
+    var w=W[c.id],isM=!!m.matched[c.id],up=isM||m.open.indexOf(i)>=0;
+    var label=c.side==='fr'?'<span class="em">'+w.em+'</span>'+esc(w.fr):esc(w.de);
+    return '<button type="button" class="mc'+(up?' up':'')+(isM?' done':'')+' '+c.side+'" data-act="memFlip" data-i="'+i+'"'+(up?' disabled':'')+' aria-label="'+(up?esc(c.side==='fr'?w.fr:w.de):'verdeckte Karte')+'">'+(up?label:'?')+'</button>';
+  }).join('');
+  return '<p class="mini">Finde zu jedem französischen Wort die deutsche Übersetzung. Rekord: '+(state.best.memory===null?'noch keiner':state.best.memory+' Züge')+'.</p>'+
+    '<div class="mem-info"><span>Züge: <b>'+m.moves+'</b></span><span>Zeit: <b id="mem-time">'+(m.start?fmtT(Date.now()-m.start):'0:00')+'</b></span><span>Paare: <b>'+m.nm+'/8</b></span><button class="btn alt" type="button" data-act="memNew">Neu mischen</button></div>'+
+    '<div class="mem-grid">'+cells+'</div>';
+}
+function memFlip(i){
+  var m=mem;if(!m||m.lock||m.done)return;
+  var c=m.cards[i];if(!c||m.matched[c.id]||m.open.indexOf(i)>=0)return;
+  if(!m.start){m.start=Date.now();startMemTimer()}
+  m.open.push(i);
+  if(c.side==='fr')speak(W[c.id].fr);
+  if(m.open.length===2){
+    m.moves++;
+    var a=m.cards[m.open[0]],b=m.cards[m.open[1]];
+    if(a.id===b.id){
+      m.matched[a.id]=1;m.nm++;m.open=[];
+      if(m.nm===8){memFinish();return}
+    }else{
+      m.lock=true;
+      setTimeout(function(){m.open=[];m.lock=false;if(mem===m&&current==='spiele'&&game==='memory')refreshGame()},950);
+    }
+  }
+  refreshGame();
+}
+function memFinish(){
+  var m=mem;m.done=true;m.time=Date.now()-m.start;stopTimers();
+  m.xp=20+Math.max(0,22-m.moves);
+  if(state.best.memory===null||m.moves<state.best.memory){state.best.memory=m.moves;m.rec=true}
+  addXp(m.xp);refreshGame();
+}
+
+/* --- Tippen --- */
+function checkTyped(v,w){
+  var s=v.toLowerCase().replace(/[’`´]/g,"'").replace(/\s+/g,' ').trim();
+  if(s===w.fr.toLowerCase())return 'ok';
+  if(loose(v)===loose(w.fr))return 'accent';
+  if(w.art&&loose(v)===loose(w.noun))return 'article';
+  return 'ko';
+}
+function tyBuild(){
+  var pool=wordsIn(F.cat).filter(function(w){return w.cat!=='phrase'});
+  if(pool.length<4)pool=W.filter(function(w){return w.cat!=='phrase'});
+  return {list:shuffle(pool).slice(0,8),i:0,ok:0,answered:false,res:null,hint:false,row:0,xp:0,val:'',done:false,rec:false};
+}
+function tyHtml(){
+  if(!ty)ty=tyBuild();
+  if(ty.done){
+    return '<div class="result"><div class="score">'+ty.ok+' von '+ty.list.length+'</div><p>Richtig geschrieben. Du hast <b>'+ty.xp+' XP</b> gesammelt.'+(ty.rec?' Neuer Rekord!':'')+'</p><div class="acts"><button class="btn" type="button" data-act="tyNew">Neue Runde</button></div></div>';
+  }
+  var w=ty.list[ty.i];
+  var hint=ty.hint?'<small>Tipp: '+esc(w.art?(w.pre.trim()+' …'):(w.fr.charAt(0)+' …'))+' ('+w.fr.length+' Zeichen)</small>':'';
+  var fb='';
+  if(ty.answered){
+    var msg=ty.res==='ok'?'Richtig!':ty.res==='accent'?'Fast! Achte auf die Akzente: ':ty.res==='article'?'Fast! Denk an den Artikel: ':'Richtig ist: ';
+    fb='<div class="fb '+(ty.res==='ok'?'ok':'ko')+'"><b>'+msg+(ty.res==='ok'?'':esc(w.fr))+'</b><span>'+esc(w.ex)+' <small>'+esc(w.exde)+'</small></span></div>';
+  }
+  var acc=['é','è','ê','à','â','ç','î','ô','û','ù','œ',"'",'-'].map(function(c){return '<button type="button" class="icon" data-act="ins" data-ch="'+c+'">'+c+'</button>'}).join('');
+  return '<p class="mini">Schreibe das französische Wort mit Artikel. Rekord: '+state.best.typing+' von 8.</p>'+
+    '<div class="qhead"><span>Wort '+(ty.i+1)+' von '+ty.list.length+'</span><div class="bar"><i style="width:'+(ty.i/ty.list.length*100)+'%"></i></div><span class="combo'+(ty.row>=3?' hot':'')+'">🔥 '+ty.row+'</span></div>'+
+    '<div class="qbox typing"><div class="emoji-xl" aria-hidden="true">'+w.em+'</div><div class="qtext"><b>'+esc(w.de)+'</b></div>'+hint+
+    '<input id="ty-in" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Französisches Wort" value="'+esc(ty.val)+'"'+(ty.answered?' disabled':'')+'>'+
+    '<div class="accents no-print">'+acc+'</div>'+
+    '<div class="row">'+(ty.answered?'<button class="btn" type="button" data-act="tyNext">'+(ty.i<ty.list.length-1?'Weiter':'Ergebnis ansehen')+'</button>':'<button class="btn" type="button" data-act="tyCheck">Prüfen</button><button class="btn alt" type="button" data-act="tyHint"'+(ty.hint?' disabled':'')+'>Tipp</button>')+'</div>'+fb+'</div>';
+}
+function tyCheck(){
+  if(!ty||ty.done||ty.answered)return;
+  var el=$('#ty-in'),v=(el?el.value:ty.val).trim();
+  if(!v){if(el)el.focus();return}
+  ty.val=v;var w=ty.list[ty.i],r=checkTyped(v,w);ty.res=r;ty.answered=true;
+  var gain=0;
+  if(r==='ok'){gain=ty.hint?4:8;ty.ok++;ty.row++;state.stats.ok++;state.stats.typedBest=Math.max(state.stats.typedBest,ty.row)}
+  else if(r==='ko'){ty.row=0;state.stats.ko++}
+  else{gain=3;ty.row=0}
+  ty.xp+=gain;
+  if(gain)addXp(gain);else commit();
+  refreshGame();
+}
+function tyNext(){
+  if(!ty||!ty.answered)return;
+  ty.i++;ty.answered=false;ty.res=null;ty.hint=false;ty.val='';
+  if(ty.i>=ty.list.length){
+    ty.done=true;
+    if(ty.ok===ty.list.length){ty.xp+=10;addXp(10)}
+    if(ty.ok>state.best.typing){state.best.typing=ty.ok;ty.rec=true}
+    commit();
+  }
+  refreshGame();
+}
+
+/* --- Stadtplan --- */
+var MAPROWS=[['poste','banque','café','pharmacie'],['cinéma','boulangerie','musée','hôtel']];
+var B=MAPROWS.map(function(row){return row.map(function(n){return W.filter(function(w){return w.noun===n})[0]})});
+function deFr(w){return w.art==='le'?'du '+w.noun:w.art==='la'?'de la '+w.noun:"de l'"+w.noun}
+function mapBuild(){
+  var qs=[];
+  B.forEach(function(row,r){row.forEach(function(w,c){
+    qs.push({k:'find',text:'Où est '+w.fr+' ?',hint:'Où est … ? = Wo ist …?',ans:[[r,c]]});
+    qs.push({k:'face',text:'Cherche le bâtiment en face '+deFr(w)+'.',hint:'en face de = gegenüber von',ans:[[1-r,c]]});
+    var nb=[];if(c>0)nb.push([r,c-1]);if(c<3)nb.push([r,c+1]);
+    qs.push({k:'next',text:'Cherche le bâtiment à côté '+deFr(w)+'.',hint:'à côté de = neben',ans:nb});
+    if(c>0){var L=[];for(var j=0;j<c;j++)L.push([r,j]);qs.push({k:'left',text:'Cherche le bâtiment à gauche '+deFr(w)+'.',hint:'à gauche de = links von',ans:L})}
+    if(c<3){var R=[];for(var j2=c+1;j2<4;j2++)R.push([r,j2]);qs.push({k:'right',text:'Cherche le bâtiment à droite '+deFr(w)+'.',hint:'à droite de = rechts von',ans:R})}
+    if(c>0&&c<3)qs.push({k:'between',text:'Cherche le bâtiment entre '+B[r][c-1].fr+' et '+B[r][c+1].fr+'.',hint:'entre … et … = zwischen … und …',ans:[[r,c]]});
+  })});
+  var cnt={},out=[];
+  shuffle(qs).forEach(function(q){if(out.length<8&&(cnt[q.k]||0)<2){cnt[q.k]=(cnt[q.k]||0)+1;out.push(q)}});
+  return {list:out,i:0,ok:0,answered:false,picked:null,hint:false,xp:0,done:false,rec:false};
+}
+function mapSvg(){
+  var q=mp.list[mp.i];
+  var isAns=function(k){return q.ans.some(function(a){return a[0]+'-'+a[1]===k})};
+  var s='<svg class="map" viewBox="0 0 680 350" role="group" aria-label="Stadtplan mit acht Gebäuden">'+
+    '<rect class="street" x="0" y="140" width="680" height="70"/><line class="dash" x1="10" y1="175" x2="670" y2="175"/>'+
+    '<text class="stname" x="340" y="166" text-anchor="middle">rue des Mots</text>';
+  B.forEach(function(row,r){row.forEach(function(w,c){
+    var x=20+c*165,y=r?225:15,k=r+'-'+c,cls='';
+    if(mp.answered){if(isAns(k))cls=' good';else if(mp.picked===k)cls=' bad';cls+=' off'}
+    s+='<g class="bld'+cls+'" data-act="mapPick" data-k="'+k+'" tabindex="'+(mp.answered?-1:0)+'" role="button" aria-label="'+esc(w.de)+'">'+
+      '<rect class="b" x="'+x+'" y="'+y+'" width="145" height="110" rx="10"/>'+
+      '<rect class="door" x="'+(x+62)+'" y="'+(r?y:y+96)+'" width="22" height="14" rx="2"/>'+
+      '<text class="em" x="'+(x+72)+'" y="'+(y+56)+'" text-anchor="middle">'+w.em+'</text>'+
+      '<text class="lb" x="'+(x+72)+'" y="'+(y+88)+'" text-anchor="middle">'+esc(w.de)+'</text></g>';
+  })});
+  return s+'</svg>';
+}
+function mapHtml(){
+  if(!mp)mp=mapBuild();
+  if(mp.done){
+    return '<div class="result"><div class="score">'+mp.ok+' von '+mp.list.length+'</div><p>Aufgaben richtig gelöst. Du hast <b>'+mp.xp+' XP</b> gesammelt.'+(mp.rec?' Neuer Rekord!':'')+'</p><div class="acts"><button class="btn" type="button" data-act="mapNew">Neue Rallye</button></div></div>';
+  }
+  var q=mp.list[mp.i],fb='';
+  if(mp.answered){
+    var good=mp.ans_ok;
+    fb='<div class="fb '+(good?'ok':'ko')+'"><b>'+(good?'Richtig!':'Nicht ganz. Die richtige Lösung ist grün markiert.')+'</b><span>'+esc(q.text)+'</span><small>'+esc(q.hint)+'</small><div><button class="btn" type="button" data-act="mapNext">'+(mp.i<mp.list.length-1?'Weiter':'Ergebnis ansehen')+'</button></div></div>';
+  }
+  return '<p class="mini">Die Gebäude sind deutsch beschriftet, die Aufgaben französisch. Links und rechts gelten so, wie du den Plan siehst. Rekord: '+state.best.map+' von 8.</p>'+
+    '<div class="qhead"><span>Aufgabe '+(mp.i+1)+' von '+mp.list.length+'</span><div class="bar"><i style="width:'+(mp.i/mp.list.length*100)+'%"></i></div></div>'+
+    '<div class="qbox"><div class="qtext"><b>'+esc(q.text)+'</b> '+spk(q.text)+'</div>'+
+    (mp.hint||mp.answered?'<small>Hilfe: '+esc(q.hint)+'</small>':'<div><button class="btn alt" type="button" data-act="mapHint">Hilfe zeigen</button></div>')+
+    mapSvg()+fb+'</div>';
+}
+function mapPick(k){
+  if(!mp||mp.answered||mp.done)return;
+  var q=mp.list[mp.i];
+  mp.answered=true;mp.picked=k;
+  mp.ans_ok=q.ans.some(function(a){return a[0]+'-'+a[1]===k});
+  if(mp.ans_ok){var g=mp.hint?5:10;mp.ok++;mp.xp+=g;state.stats.ok++;addXp(g)}
+  else{state.stats.ko++;commit()}
+  refreshGame();
+}
+function mapNext(){
+  if(!mp||!mp.answered)return;
+  mp.i++;mp.answered=false;mp.picked=null;mp.hint=false;
+  if(mp.i>=mp.list.length){
+    mp.done=true;
+    if(mp.ok===mp.list.length){mp.xp+=10;addXp(10)}
+    if(mp.ok>state.best.map){state.best.map=mp.ok;mp.rec=true}
+    commit();
+  }
+  refreshGame();
+}
+
+/* ================= Ansicht: Erfolge ================= */
+function vErfolge(){
+  var seen=Object.keys(state.boxes).length;
+  var master=Object.keys(state.boxes).filter(function(k){return state.boxes[k]===5}).length;
+  var s=state.stats,total=s.ok+s.ko;
+  var earned=BADGES.filter(function(b){return state.badges[b.id]}).length;
+  return '<h2>Dein Fortschritt</h2><div class="statgrid">'+
+    '<div><b>'+seen+' / '+W.length+'</b>Wörter kennengelernt</div>'+
+    '<div><b>'+master+'</b>Wörter gemeistert (Fach 5)</div>'+
+    '<div><b>'+(total?Math.round(s.ok/total*100)+' %':'noch offen')+'</b>Trefferquote ('+s.ok+' von '+total+')</div>'+
+    '<div><b>'+s.quizzes+'</b>Quizrunden</div>'+
+    '<div><b>'+s.bestCombo+'</b>längste Quiz-Serie</div>'+
+    '<div><b>'+state.xp+'</b>XP gesamt</div></div>'+
+    '<h3>Karteikasten</h3>'+boxStrip(W)+
+    '<h3>Abzeichen ('+earned+' von '+BADGES.length+')</h3><div class="badges">'+BADGES.map(function(b){
+      var on=!!state.badges[b.id];
+      return '<div class="badge'+(on?'':' lock')+'"><span class="bi" aria-hidden="true">'+b.icon+'</span><div><b>'+b.name+'</b><small>'+b.desc+'</small></div></div>';
+    }).join('')+'</div>'+
+    '<p class="mini">Dein Fortschritt wird nur in diesem Browser gespeichert. Auf einem anderen Gerät beginnst du wieder von vorn.</p>'+
+    '<div class="danger-zone"><b>Neu anfangen?</b><span>Du kannst die Karteikarten, die Statistik oder die ganze App zurücksetzen.</span><button class="btn danger" type="button" data-act="openReset">Zurücksetzen</button></div>';
+}
+
+/* ================= Rendering und Ereignisse ================= */
+var view=$('#view');
+var VIEWS={wortfeld:vWortfeld,liste:vListe,karten:vKarten,quiz:vQuiz,spiele:vSpiele,erfolge:vErfolge};
+function render(){
+  stopTimers();
+  $$('.tabs button').forEach(function(b){
+    var on=b.dataset.t===current;b.classList.toggle('on',on);
+    if(on)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');
+  });
+  view.innerHTML=VIEWS[current]();
+  afterRender();
+}
+function afterRender(){
+  if(current==='spiele'){
+    if(game==='memory')startMemTimer();
+    if(game==='typing')focusTy();
+  }
+  if(current==='quiz'&&qz&&!qz.done&&!qz.answered){
+    var q=qz.list[qz.i];
+    if(q.audio&&!q.spoken){q.spoken=true;speak(q.audio)}
+  }
+}
+function go(t){current=t;render();try{window.scrollTo(0,0)}catch(e){}}
+
+function openDlg(){var d=$('#dlg');try{d.showModal()}catch(e){d.setAttribute('open','')}}
+function closeDlg(){var d=$('#dlg');try{d.close()}catch(e){d.removeAttribute('open')}}
+
+var A={
+  tab:function(t){go(t.dataset.t)},
+  say:function(t){speak(t.dataset.t)},
+  sayCity:function(){speak('la ville')},
+  chip:function(t){
+    var id=+t.dataset.id;wfOpen[id]=!wfOpen[id];
+    var tmp=document.createElement('div');tmp.innerHTML=chipHtml(W[id]);
+    t.replaceWith(tmp.firstChild);
+    if(wfOpen[id])speak(W[id].fr);
+  },
+  rev:function(t){ls.rev[+t.dataset.id]=1;var b=$('#ls-body');if(b)b.innerHTML=listRows()},
+  print:function(){try{window.print()}catch(e){toast('Drucken ist hier nicht verfügbar.')}},
+  flip:function(){
+    if(fc.flipped||fc.finished)return;
+    fc.flipped=true;
+    var f=$('.flip');if(f)f.classList.add('is-flipped');
+    var a=$('#fc-actions');if(a)a.innerHTML=fcActions();
+    var c=fc.queue[fc.i];if(c&&c.dir==='fr2de')speak(c.w.fr);
+  },
+  fcOk:function(){fcAnswer(true)},
+  fcKo:function(){fcAnswer(false)},
+  fcNew:function(){fc=newFc(fc.dir);render()},
+  qzPick:function(t){qzPick(+t.dataset.i)},
+  qzNext:function(){qzNext()},
+  qzNew:function(){qz=qzBuild();render()},
+  game:function(t){game=t.dataset.g;render()},
+  memFlip:function(t){memFlip(+t.dataset.i)},
+  memNew:function(){stopTimers();mem=memBuild();refreshGame()},
+  tyCheck:function(){tyCheck()},
+  tyNext:function(){tyNext()},
+  tyHint:function(){var e=$('#ty-in');if(e&&ty)ty.val=e.value;if(ty){ty.hint=true;refreshGame()}},
+  tyNew:function(){ty=tyBuild();refreshGame()},
+  tyEnter:function(){if(!ty||ty.done)return;if(ty.answered)tyNext();else tyCheck()},
+  ins:function(t){
+    var e=$('#ty-in');if(!e||e.disabled)return;
+    var s=e.selectionStart==null?e.value.length:e.selectionStart,en=e.selectionEnd==null?s:e.selectionEnd;
+    e.value=e.value.slice(0,s)+t.dataset.ch+e.value.slice(en);
+    e.focus();try{e.setSelectionRange(s+1,s+1)}catch(x){}
+    if(ty)ty.val=e.value;
+  },
+  mapPick:function(t){mapPick(t.dataset.k)},
+  mapNext:function(){mapNext()},
+  mapNew:function(){mp=mapBuild();refreshGame()},
+  mapHint:function(){if(mp){mp.hint=true;refreshGame()}},
+  openReset:function(){openDlg()},
+  closeDlg:function(){closeDlg()},
+  resetCards:function(){state.boxes={};save();resetSessions();closeDlg();commit();render();toast('Karteikarten zurückgesetzt.')},
+  resetRecords:function(){state.stats=defaultState().stats;state.best=defaultState().best;save();resetSessions();closeDlg();commit();render();toast('Statistik und Rekorde zurückgesetzt.')},
+  resetAll:function(){state=defaultState();save();resetSessions();wfOpen={};ls={q:'',mode:'both',rev:{}};F.cat='all';game='memory';closeDlg();updateHud();render();toast('Alles zurückgesetzt. Bonne chance!')}
+};
+document.addEventListener('click',function(e){
+  var t=e.target.closest?e.target.closest('[data-act]'):null;
+  if(!t)return;
+  var f=A[t.dataset.act];if(f)f(t,e);
+});
+document.addEventListener('input',function(e){
+  var t=e.target;
+  if(t.id==='ls-q'){ls.q=t.value;var b=$('#ls-body');if(b)b.innerHTML=listRows()}
+  else if(t.id==='ty-in'&&ty){ty.val=t.value}
+});
+document.addEventListener('change',function(e){
+  var t=e.target,b=t.dataset&&t.dataset.bind;if(!b)return;
+  if(b==='cat'){F.cat=t.value;resetSessions();render()}
+  else if(b==='lsMode'){ls.mode=t.value;ls.rev={};render()}
+  else if(b==='fcDir'){fc.dir=t.value;fc=newFc(fc.dir);render()}
+});
+document.addEventListener('keydown',function(e){
+  var tg=e.target,tag=tg.tagName;
+  if(tag==='INPUT'&&tg.id==='ty-in'&&e.key==='Enter'){e.preventDefault();A.tyEnter();return}
+  if(tag==='INPUT'||tag==='SELECT'||tag==='TEXTAREA')return;
+  if(tg.getAttribute&&tg.getAttribute('role')==='button'&&tag!=='BUTTON'&&(e.key==='Enter'||e.key===' ')){
+    e.preventDefault();tg.dispatchEvent(new MouseEvent('click',{bubbles:true}));return;
+  }
+  if(e.ctrlKey||e.metaKey||e.altKey)return;
+  var k=e.key;
+  if(current==='karten'&&fc.built&&!fc.finished&&fc.queue.length){
+    if(!fc.flipped&&tag!=='BUTTON'&&(k===' '||k==='ArrowUp'||k==='ArrowDown')){e.preventDefault();A.flip()}
+    else if(fc.flipped&&(k==='ArrowLeft'||k==='1'))fcAnswer(false);
+    else if(fc.flipped&&(k==='ArrowRight'||k==='2'))fcAnswer(true);
+  }else if(current==='quiz'&&qz&&!qz.done){
+    if(!qz.answered&&/^[1-4]$/.test(k)){var b=$$('.opt')[+k-1];if(b)b.click()}
+    else if(qz.answered&&tag!=='BUTTON'&&(k==='Enter'||k==='ArrowRight'))qzNext();
+  }
+});
+
+updateHud();
+render();
+})();
+</script>
+</body>
+</html>
